@@ -21,8 +21,10 @@ def gethtml():
             txt += '【' + str(i+1) + '】'
             txt += results
             txt += '\n'
+        '''
         with open('D:/Coding/数据.txt', mode= 'w', encoding= 'utf-8') as file:
             file.write(txt)
+            '''
         return(txt)
     except:
         print("炸了！")
