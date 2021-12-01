@@ -1,2 +1,2 @@
-# Spider
-爬虫练习
+# 爬虫练习
+* pip install -r requirements.txt
