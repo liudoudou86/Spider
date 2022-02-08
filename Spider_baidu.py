@@ -1,3 +1,6 @@
+# Description：双码打卡
+# Author：刘豆豆
+# Time：2022/02/07
 #!/usr/bin/env python
 #coding=utf-8
 
@@ -29,7 +32,7 @@ def gethtml():
         # print(txt)
         return txt
     except:
-        print("炸了！")
+        print("炸了!")
 
 def send_msg(msg):
     """
