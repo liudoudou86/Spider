@@ -1,7 +1,6 @@
-# Description：双码打卡
+# Description：百度热榜爬虫
 # Author：刘豆豆
 # Time：2022/02/07
-#!/usr/bin/env python
 #coding=utf-8
 
 import requests
@@ -19,11 +18,13 @@ def gethtml():
         txt = ''
         res = requests.get(url, headers) # 爬取网页
         soup = BeautifulSoup(res.text, 'lxml') # 使用bs4对网页进行分析
-        result = soup.select('.c-single-text-ellipsis') # 对关键词进行class的定位\
+        result = soup.select('.title_dIF3B') # 对关键词进行class的定位
         for i in range(0,10):
             results = result[i].text.strip().replace('\n', '')
-            txt += '【' + str(i+1) + '】'
-            txt += results
+            links = result[i].get('href')
+            txt += '>[' + str(i+1) + '] ' # 序列号
+            txt += '[' + results + ']' # 将链接隐藏进标题内容
+            txt += '(' + links +')'
             txt += '\n\n'
         '''
         with open('D:/Coding/数据.txt', mode= 'w', encoding= 'utf-8') as file:
@@ -41,7 +42,7 @@ def send_msg(msg):
     try:
         url = "https://oapi.dingtalk.com/robot/send?access_token=7050f5a5e20958eed4aaa270ea19376e700e0cac0aa8768b8be1566a12980a51"
         dd = DingDing(webhook = url)
-        info = dd.Send_MardDown_Msg(Title= '百度热搜', Content= '### **百度热搜：**\n' + msg, isAtAll= True)
+        info = dd.Send_MardDown_Msg(Title= '百度热搜', Content= '#### **百度热搜:**\n' + msg, isAtAll= True)
         print(info)
     except:
         print("没发出去~")

@@ -1,3 +1,4 @@
 requests
 Beautifulsoup4
+lxml
 DingDingBot
