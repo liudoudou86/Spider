@@ -15,14 +15,21 @@ def gethtml():
     url = "https://toutiao.io/"
     headers = {"user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.80 Safari/537.36 Edg/98.0.1108.43"}
     try:
-        txt = ''
         res = requests.get(url=url, headers=headers) # 爬取网页
         soup = BeautifulSoup(res.text, 'lxml') # 使用bs4对网页进行分析
         result = soup.select('a[target="_blank"]') # 对关键词进行class的定位
+        txt = ''
         for i in range(0,10):
             results = result[i].text.strip().replace('\n', '')
-            txt += '【' + str(i+1) + '】'
-            txt += results
+            links = result[i].get('href')
+            txt += '>'
+            txt += '[' + str(i+1) + '] '
+            txt += '['
+            txt += results # 将链接隐藏进标题内容中
+            txt += ']'
+            txt += '(https://toutiao.io/'
+            txt += links
+            txt += ')'
             txt += '\n\n'
         '''
         with open('D:/Coding/数据.txt', mode= 'w', encoding= 'utf-8') as file:
