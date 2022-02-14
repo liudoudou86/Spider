@@ -32,8 +32,8 @@ def gethtml():
         '''
         # print(txt)
         return txt
-    except:
-        print("炸了!")
+    except Exception as e:
+        print(e)
 
 def send_msg(msg):
     """
@@ -44,8 +44,8 @@ def send_msg(msg):
         dd = DingDing(webhook = url)
         info = dd.Send_MardDown_Msg(Title= '百度热搜', Content= '#### **百度热搜:**\n' + msg, isAtAll= True)
         print(info)
-    except:
-        print("没发出去~")
+    except Exception as e:
+        print(e)
 
 if __name__ == "__main__":
     msg = gethtml()
