@@ -19,7 +19,7 @@ def gethtml():
         soup = BeautifulSoup(res.text, 'lxml') # 使用bs4对网页进行分析
         result = soup.select('a[target="_blank"]') # 对关键词进行class的定位
         txt = ''
-        for i in range(0,10):
+        for i in range(0,12):
             results = result[i].text.strip().replace('\n', '')
             links = result[i].get('href')
             txt += '>[' + str(i+1) + '] ' # 序列号
