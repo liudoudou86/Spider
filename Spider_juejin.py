@@ -1,5 +1,5 @@
 # -*- encoding=utf8 -*-
-# Description：掘金综合3天热榜爬虫
+# Description：掘金综合热榜
 # Author：刘豆豆
 # Time：2022/03/07
 

@@ -1,5 +1,5 @@
 # -*- encoding=utf8 -*-
-# Description：百度热榜爬虫
+# Description：百度热榜
 # Author：刘豆豆
 # Time：2022/02/07
 

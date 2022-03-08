@@ -1,5 +1,5 @@
 # -*- encoding=utf8 -*-
-# Description：开发者头条爬虫
+# Description：开发者头条
 # Author：刘豆豆
 # Time：2022/02/07
 
