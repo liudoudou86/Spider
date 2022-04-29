@@ -20,7 +20,7 @@ def get_baidu():
         res = requests.get(url, headers) # 爬取网页
         soup = BeautifulSoup(res.text, 'lxml') # 使用bs4对网页进行分析
         result = soup.select('.title_dIF3B') # 对关键词进行class的定位
-        for i in range(0,12):
+        for i in range(0,15):
             results = result[i].text.strip().replace('\n', '')
             links = result[i].get('href')
             txt += '>[' + str(i+1) + '] ' # 序列号
@@ -47,7 +47,7 @@ def get_toutiao():
         soup = BeautifulSoup(res.text, 'lxml') # 使用bs4对网页进行分析
         result = soup.select('a[target="_blank"]') # 对关键词进行class的定位
         txt = ''
-        for i in range(0,12):
+        for i in range(0,15):
             results = result[i].text.strip().replace('\n', '')
             links = result[i].get('href')
             txt += '>[' + str(i+1) + '] ' # 序列号
@@ -75,7 +75,7 @@ def get_juejin():
     "client_type":2608,
     "sort_type":3,
     "cursor":"0",
-    "limit":12
+    "limit":20
     }
     try:
         res = session.request(url = url,method='post',json = json,headers = headers)
@@ -83,7 +83,7 @@ def get_juejin():
         result = jsonpath.jsonpath(data, '$..article_info.title') # 通过jsonpath获取标题
         link = jsonpath.jsonpath(data, '$..item_info.article_id')
         txt = ''
-        for i in range(0,12):
+        for i in range(0,20):
             results = result[i]
             links = link[i]
             txt += '>[' + str(i+1) + '] ' # 序列号
