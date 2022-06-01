@@ -109,6 +109,6 @@ def send_msg(title, msg):
 
 if __name__ == "__main__":
     
-    filefly = [('百度热榜', get_baidu()), ('开发者头条', get_toutiao()), ('掘金', get_juejin())]
-    for title, msg in filefly:
-        send_msg(title ,msg)
+    namelist = [('百度热榜', get_baidu()), ('开发者头条', get_toutiao()), ('掘金', get_juejin())]
+    for title, msg in namelist:
+        send_msg(title, msg)
