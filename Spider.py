@@ -102,7 +102,7 @@ def send_msg(title, msg):
     try:
         url = "https://oapi.dingtalk.com/robot/send?access_token=7050f5a5e20958eed4aaa270ea19376e700e0cac0aa8768b8be1566a12980a51"
         dd = DingDing(webhook = url)
-        info = dd.Send_MardDown_Msg(Title= title, Content= '#### **' + title + ':**\n' + msg, isAtAll= True)
+        info = dd.Send_MardDown_Msg(Title= title, Content= '#### **' + title + ':**\n' + msg, atMobiles = ['+86-13820303577'], isAtAll= False)
         print(info)
     except Exception as e:
         print(e)
