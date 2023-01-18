@@ -95,6 +95,34 @@ def get_juejin():
     except Exception as e:
         print(e)
 
+def get_sifou():
+    """
+    url和headers是为了仿照浏览器进行访问
+    """
+    url = "https://segmentfault.com/questions/hottest/weekly"
+    headers = {"user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.80 Safari/537.36 Edg/98.0.1108.43"}
+    try:
+        res = requests.get(url=url, headers=headers) # 爬取网页
+        res.encoding = "utf-8" # 将网页进行转码
+        soup = BeautifulSoup(res.text, 'lxml') # 使用bs4对网页进行分析
+        result = soup.select('a[class="text-body"]') # 对关键词进行class的定位
+        txt = ''
+        for i in range(0,15):
+            results = result[i].text.strip().replace('\n', '')
+            links = result[i].get('href')
+            txt += '>[' + str(i+1) + '] ' # 序列号
+            txt += '[' + results + ']' # 将链接隐藏进标题内容
+            txt += '(https://segmentfault.com' + links +')'
+            txt += '\n\n'
+        '''
+        with open('D:/Coding/数据.txt', mode= 'w', encoding= 'utf-8') as file:
+            file.write(txt)
+        '''
+        # print(txt)
+        return txt
+    except Exception as e:
+        print(e)
+
 def send_msg(title, msg):
     """
     使用第三方包对钉钉发送数据
@@ -109,6 +137,6 @@ def send_msg(title, msg):
 
 if __name__ == "__main__":
     
-    namelist = [('百度热榜', get_baidu()), ('开发者头条', get_toutiao()), ('掘金', get_juejin())]
+    namelist = [('百度热榜', get_baidu()), ('开发者头条', get_toutiao()), ('掘金热榜', get_juejin()), ('思否问答', get_sifou())]
     for title, msg in namelist:
         send_msg(title, msg)
