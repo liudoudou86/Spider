@@ -20,7 +20,7 @@ def get_baidu():
         res = requests.get(url, headers) # 爬取网页
         soup = BeautifulSoup(res.text, 'lxml') # 使用bs4对网页进行分析
         result = soup.select('.title_dIF3B') # 对关键词进行class的定位
-        for i in range(0,15):
+        for i in range(0,10):
             results = result[i].text.strip().replace('\n', '')
             links = result[i].get('href')
             txt += '>[' + str(i+1) + '] ' # 序列号
@@ -47,7 +47,7 @@ def get_toutiao():
         soup = BeautifulSoup(res.text, 'lxml') # 使用bs4对网页进行分析
         result = soup.select('a[target="_blank"]') # 对关键词进行class的定位
         txt = ''
-        for i in range(0,15):
+        for i in range(0,10):
             results = result[i].text.strip().replace('\n', '')
             links = result[i].get('href')
             txt += '>[' + str(i+1) + '] ' # 序列号
@@ -83,7 +83,7 @@ def get_juejin():
         result = jsonpath.jsonpath(data, '$..article_info.title') # 通过jsonpath获取标题
         link = jsonpath.jsonpath(data, '$..item_info.article_id')
         txt = ''
-        for i in range(0,20):
+        for i in range(0,10):
             results = result[i]
             links = link[i]
             txt += '>[' + str(i+1) + '] ' # 序列号
@@ -107,7 +107,7 @@ def get_sifou():
         soup = BeautifulSoup(res.text, 'lxml') # 使用bs4对网页进行分析
         result = soup.select('a[class="text-body"]') # 对关键词进行class的定位
         txt = ''
-        for i in range(0,15):
+        for i in range(0,10):
             results = result[i].text.strip().replace('\n', '')
             links = result[i].get('href')
             txt += '>[' + str(i+1) + '] ' # 序列号
