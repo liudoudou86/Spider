@@ -19,7 +19,7 @@ def getHouse(url):
         ul = doc('.sellListContent')
         divs = ul.children('.clear .info.clear').items()
         count = 0
-        region = ['元兴新里', '三德里', '津滨雅都公寓', '江南公寓', '景龙大厦', '金达园', '泰达园', '和平公寓', '惠禧温泉公寓', '黄埔里社区', '恩德里社区', '珠海里']
+        region = ['元兴新里', '庆荣里', '三德里', '津滨雅都公寓', '江南公寓', '景龙大厦', '金达园', '泰达园', '和平公寓', '惠禧温泉公寓', '黄埔里社区', '恩德里社区', '珠海里']
         for div in divs:
             count += 1
             title = div.children('.title a').text()
@@ -28,7 +28,7 @@ def getHouse(url):
             houseinfo = div.children('.address .houseInfo').text()
             price = div.children('.address .priceInfo .totalPrice.totalPrice2').text()
             if address in region:
-                txt += '[' + address + '] ' + price + ' | ' + houseinfo + ' --->【' + link + '】'
+                txt += '[' + address + '] ' + price + ' | ' + houseinfo + ' ---> ' + link
                 txt += '\n'
         print(txt)
     except Exception as e:
