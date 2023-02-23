@@ -22,7 +22,6 @@ def getHouse(url):
         region = ['元兴新里', '庆荣里', '三德里', '津滨雅都公寓', '江南公寓', '景龙大厦', '金达园', '泰达园', '和平公寓', '惠禧温泉公寓', '黄埔里社区', '恩德里社区', '珠海里']
         for div in divs:
             count += 1
-            title = div.children('.title a').text()
             link = div.children('.title a').attr('href')
             address = div.children('.address a').text()
             houseinfo = div.children('.address .houseInfo').text()
