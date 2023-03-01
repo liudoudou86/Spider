@@ -19,7 +19,7 @@ def getHouse(url):
         ul = doc('.sellListContent')
         divs = ul.children('.clear .info.clear').items()
         count = 0
-        region = ['元兴新里', '庆荣里', '德恩里', '长安里', '三德里', '盛瑞公寓', '津滨雅都公寓', '江南公寓', '景龙大厦', '金达园', '泰达园', '和平公寓', '惠禧温泉公寓', '黄埔里', '珠海里']
+        region = ['元兴新里', '庆荣里', '津滨雅都公寓', '长安里', '三德里', '德恩里', '盛瑞公寓', '黄埔里', '珠海里']
         for div in divs:
             count += 1
             link = div.children('.title a').attr('href')
